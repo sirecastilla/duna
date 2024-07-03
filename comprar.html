@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compra - Maquinaria Agricola "DUNA"</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #E9C46A; /* Amarillo Dorado */
+      color: #597445; /* Letras verdes */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    header {
+      width: 100%;
+      background-color: #f5f5dc; /* Crema */
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      height: 50px;
+      margin-right: 20px;
+      cursor: pointer;
+    }
+
+    .titulo {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .producto {
+      width: 80%;
+      max-width: 600px;
+      background-color: #ffffff; /* Fondo blanco */
+      margin: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+      display: flex;
+      align-items: center;
+    }
+
+    .producto img {
+      width: 100px;
+      height: 100px;
+      border-radius: 8px;
+      margin-right: 20px;
+    }
+
+    .producto-info {
+      flex: 1;
+    }
+
+    .boton-comprar {
+      background-color: #007bff; /* Azul */
+      color: #ffffff; /* Blanco */
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .boton-comprar:hover {
+      background-color: #0056b3; /* Azul más oscuro al pasar el mouse */
+    }
+
+    .pago {
+      width: 80%;
+      max-width: 600px;
+      background-color: #ffffff; /* Fondo blanco */
+      margin: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+      text-align: center;
+    }
+
+    .total {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+
+    .eliminar-producto {
+      background-color: #E74C3C; /* Rojo */
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    .eliminar-producto:hover {
+      background-color: #c0392b; /* Rojo más oscuro al pasar el mouse */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">
+      <img src="logo.png" alt="Logo de DUNA">
+    </a>
+    <h1>Compra de Productos - Maquinaria Agricola "DUNA"</h1>
+  </header>
+
+  <div id="lista-productos">
+    <!-- Aquí se mostrarán dinámicamente los productos del carrito -->
+  </div>
+
+  <div class="total" id="total"></div>
+
+  <button id="boton-comprar" class="boton-comprar">Procesar Pago</button>
+
+  <div class="pago" id="seccion-pago" style="display: none;">
+    <h2 class="titulo">Procesar Pago</h2>
+    <form id="formulario-pago" action="/procesar_pago" method="POST">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required><br><br>
+      <label for="tarjeta">Número de Tarjeta:</label>
+      <input type="text" id="tarjeta" name="tarjeta" required><br><br>
+      <label for="fecha">Fecha de Vencimiento:</label>
+      <input type="text" id="fecha" name="fecha" placeholder="MM/AA" required><br><br>
+      <label for="cvv">CVV:</label>
+      <input type="text" id="cvv" name="cvv" required><br><br>
+      <button type="submit" class="boton-comprar">Confirmar Pago</button>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Simulación de datos de carrito (esto debería ser obtenido dinámicamente de carrito.html)
+      var productos = [
+        { id: 1, nombre: 'Tractor Ford 6610', imagen: 'tractor_ford.jpg', descripcion: 'Tractor Ford 6610 utilizado para labores agrícolas.', precio: 450000 },
+        { id: 2, nombre: 'Sembradora de Granos Finos John Deere 1590', imagen: 'sembradora_granos_finos.jpg', descripcion: 'Sembradora de granos finos para siembra precisa.', precio: 350000 },
+        { id: 3, nombre: 'Cribadora Rotatoria REMU', imagen: 'cribadora.jpg', descripcion: 'Cribadora rotatoria para selección de materiales.', precio: 280000 },
+        { id: 4, nombre: 'Cosechadora Case IH Axial-Flow 7150', imagen: 'cosechadora.jpg', descripcion: 'Cosechadora axial-flow para cosechas eficientes.', precio: 1200000 },
+        { id: 5, nombre: 'Arado de Discos Kuhn Krause 5635', imagen: 'arado.jpg', descripcion: 'Arado de discos para labranza profunda.', precio: 150000 },
+        { id: 6, nombre: 'Rastra de Discos John Deere 637', imagen: 'rastra.jpg', descripcion: 'Rastra de discos para preparación de suelos.', precio: 200000 }
+      ];
+
+      var total = 0;
+
+      // Función para mostrar los productos del carrito
+      function mostrarProductos() {
+        var listaProductos = document.getElementById('lista-productos');
+
+        productos.forEach(function(producto) {
+          var productoHTML = `
+            <div class="producto" data-id="${producto.id}">
+              <img src="${producto.imagen}" alt="${producto.nombre}">
+              <div class="producto-info">
+                <h2 class="titulo">${producto.nombre}</h2>
+                <p>${producto.descripcion}</p>
+                <p class="precio">$ ${producto.precio.toLocaleString()} MXN</p>
+              </div>
+              <button class="eliminar-producto">Eliminar</button>
+            </div>
+          `;
+          listaProductos.innerHTML += productoHTML;
+
+          // Sumar el precio al total
+          total += producto.precio;
+        });
+
+        // Mostrar el total
+        var totalElemento = document.getElementById('total');
+        totalElemento.textContent = `Total a pagar: $ ${total.toLocaleString()} MXN`;
+      }
+
+      mostrarProductos();
+
+      // Evento para eliminar un producto del carrito
+      var listaProductos = document.getElementById('lista-productos');
+      listaProductos.addEventListener('click', function(event) {
+        if (event.target.classList.contains('eliminar-producto')) {
+          var producto = event.target.closest('.producto');
+          var productoId = parseInt(producto.dataset.id, 10);
+          var productoPrecio = productos.find(p => p.id === productoId).precio;
+
+          // Actualizar total
+          total -= productoPrecio;
+          totalElemento.textContent = `Total a pagar: $ ${total.toLocaleString()} MXN`;
+
+          // Eliminar producto del DOM
+          producto.remove();
+        }
+      });
+
+      // Evento para mostrar la sección de pago al hacer clic en "Procesar Pago"
+      var botonComprar = document.getElementById('boton-comprar');
+      botonComprar.addEventListener('click', function() {
+        var seccionPago = document.getElementById('seccion-pago');
+        seccionPago.style.display = 'block';
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de Productos - Maquinaria Agricola "DUNA"</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Century Schoolbook, serif;
+      background-color: #E9C46A; /* Amarillo Dorado */
+      color: #000; /* Letras negras */
+    }
+    
+    header {
+      background-color: #f5f5dc; /* Crema */
+      color: #000; /* Letras negras */
+      padding: 20px;
+      text-align: right;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo {
+      height: 50px;
+      margin-right: 20px;
+    }
+
+    h1 {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    section {
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+    .producto {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      background-color: #fff; /* Fondo blanco para cada producto */
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+      width: calc(50% - 40px); /* Ajuste de ancho para dos columnas */
+      box-sizing: border-box;
+    }
+
+    .imagen-producto {
+      width: 150px;
+      margin-right: 20px;
+    }
+
+    .texto-producto {
+      flex: 1;
+    }
+
+    .btn-agregar, .btn-en-carrito {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 4px;
+      display: block;
+      width: 100%;
+      max-width: 200px; /* Ancho máximo para el botón */
+      margin-top: 10px; /* Espaciado superior */
+    }
+
+    .btn-en-carrito {
+      background-color: #FF9800; /* Naranja */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Logo de DUNA" class="logo">
+    <h1>Catálogo de Productos - Maquinaria Agricola "DUNA"</h1>
+  </header>
+
+  <section>
+    <!-- Producto 1: Tractor Ford -->
+    <div class="producto" data-id="1">
+      <img class="imagen-producto" src="tractor_ford.jpg" alt="Tractor Ford 6610">
+      <div class="texto-producto">
+        <h3>Tractor Ford 6610</h3>
+        <p>El tractor Ford 6610 es conocido por su durabilidad y eficiencia en el campo. Ideal para labores agrícolas intensivas.</p>
+        <p><strong>Precio:</strong> $450,000 MXN</p>
+        <button class="btn-agregar" onclick="agregarAlCarrito(this)">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto 2: Sembradora de granos finos -->
+    <div class="producto" data-id="2">
+      <img class="imagen-producto" src="sembradora_granos_finos.jpg" alt="Sembradora de Granos Finos John Deere 1590">
+      <div class="texto-producto">
+        <h3>Sembradora de Granos Finos John Deere 1590</h3>
+        <p>Sembradora eficiente para todo tipo de granos finos, con tecnología avanzada para asegurar una siembra uniforme y precisa.</p>
+        <p><strong>Precio:</strong> $350,000 MXN</p>
+        <button class="btn-agregar" onclick="agregarAlCarrito(this)">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto 3: Cribadora -->
+    <div class="producto" data-id="3">
+      <img class="imagen-producto" src="cribadora.jpg" alt="Cribadora Rotatoria REMU">
+      <div class="texto-producto">
+        <h3>Cribadora Rotatoria REMU</h3>
+        <p>Cribadora rotatoria para separar y clasificar materiales agrícolas, mejorando la calidad de la cosecha y la eficiencia de la producción.</p>
+        <p><strong>Precio:</strong> $280,000 MXN</p>
+        <button class="btn-agregar" onclick="agregarAlCarrito(this)">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto 4: Cosechadora -->
+    <div class="producto" data-id="4">
+      <img class="imagen-producto" src="cosechadora.jpg" alt="Cosechadora Case IH Axial-Flow 7150">
+      <div class="texto-producto">
+        <h3>Cosechadora Case IH Axial-Flow 7150</h3>
+        <p>La cosechadora Case IH Axial-Flow 7150 ofrece rendimiento y eficiencia excepcionales para maximizar la productividad en la cosecha.</p>
+        <p><strong>Precio:</strong> $1,200,000 MXN</p>
+        <button class="btn-agregar" onclick="agregarAlCarrito(this)">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto 5: Arado de Discos -->
+    <div class="producto" data-id="5">
+      <img class="imagen-producto" src="arado.jpg" alt="Arado de Discos Kuhn Krause 5635">
+      <div class="texto-producto">
+        <h3>Arado de Discos Kuhn Krause 5635</h3>
+        <p>El arado de discos Kuhn Krause 5635 está diseñado para proporcionar un trabajo eficiente y uniforme en la preparación del suelo.</p>
+        <p><strong>Precio:</strong> $150,000 MXN</p>
+        <button class="btn-agregar" onclick="agregarAlCarrito(this)">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto 6: Rastra de Discos -->
+    <div class="producto" data-id="6">
+      <img class="imagen-producto" src="rastra.jpg" alt="Rastra de Discos John Deere 637">
+      <div class="texto-producto">
+        <h3>Rastra de Discos John Deere 637</h3>
+        <p>La rastra de discos John Deere 637 es ideal para labores de arado secundario y preparación del lecho de siembra, asegurando un suelo bien acondicionado.</p>
+        <p><strong>Precio:</strong> $200,000 MXN</p>
+        <button class="btn-agregar" onclick="agregarAlCarrito(this)">Agregar al Carrito</button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function agregarAlCarrito(button) {
+      var producto = button.closest('.producto');
+      var id = producto.dataset.id;
+      var imagen = producto.querySelector('.imagen-producto').src;
+      var nombre = producto.querySelector('h3').textContent;
+      var precio = producto.querySelector('p').textContent;
+
+      // Crear el producto en el carrito
+      var productoCarrito = document.createElement('div');
+      productoCarrito.classList.add('producto');
+      productoCarrito.innerHTML = `
+        <img class="imagen-producto" src="${imagen}" alt="${nombre}">
+        <div class="texto-producto">
+          <h3>${nombre}</h3>
+          <p>${precio}</p>
+          <button class="btn-eliminar" onclick="eliminarProducto(this)">Eliminar</button>
+        </div>
+      `;
+
+      // Añadir el producto al carrito
+      var carrito = opener.document.getElementById('carrito');
+      carrito.insertBefore(productoCarrito, carrito.querySelector('.btn-comprar'));
+
+      // Cambiar el botón a "En tu carrito"
+      button.classList.remove('btn-agregar');
+      button.classList.add('btn-en-carrito');
+      button.textContent = 'En tu carrito';
+      button.disabled = true;
+    }
+
+    function eliminarProducto(button) {
+      // Eliminar el producto del DOM
+      var producto = button.closest('.producto');
+      producto.remove();
+
+      // Aquí podrías también eliminar el producto del carrito en el servidor o en el almacenamiento local
+    }
+  </script>
+</body>
+</html>

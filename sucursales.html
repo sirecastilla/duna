@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sucursales - Maquinaria Agricola "DUNA"</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Century Schoolbook, serif;
+      background-color: #E9C46A; /* Amarillo Dorado */
+      color: #000000; /* Texto negro */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    header {
+      background-color: #f5f5dc; /* Crema */
+      color: #000000; /* Texto negro */
+      padding: 20px;
+      text-align: center;
+      width: 100%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      height: 50px;
+      margin-right: 20px;
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+
+    section {
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .sucursal {
+      width: 45%; /* Ajuste de ancho para dos columnas */
+      background-color: #ffffff; /* Fondo blanco */
+      margin: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .sucursal img {
+      width: 50%; /* Ajuste del ancho de la imagen a la mitad */
+      height: auto;
+      border-radius: 8px;
+      cursor: pointer;
+      align-items: center;
+
+    }
+
+    .direccion {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .ciudad {
+      font-weight: bold;
+      color: #597445; /* Letras verdes */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Logo de DUNA" class="logo">
+    <h1>Sucursales</h1>
+  </header>
+
+  <section>
+    <div class="sucursal">
+      <a href="https://www.google.com/maps?q=Blvd.+Sur+%23789,+Col.+Jardines,+Guadalajara,+JAL" target="_blank">
+        <img src="sucursal_jalisco.jpg" alt="Sucursal Jalisco">
+      </a>
+      <h3>Sucursal Jalisco</h3>
+      <div class="direccion">
+        <p>Blvd. Sur #789, Col. Jardines</p>
+        <p class="ciudad">Guadalajara, JAL</p>
+      </div>
+    </div>
+
+    <div class="sucursal">
+      <a href="https://www.google.com/maps?q=Av.+Central+%23123,+Col.+Centro,+Cuernavaca,+MOR" target="_blank">
+        <img src="sucursal_morelos.jpg" alt="Sucursal Morelos">
+      </a>
+      <h3>Sucursal Morelos</h3>
+      <div class="direccion">
+        <p>Av. Central #123, Col. Centro</p>
+        <p class="ciudad">Cuernavaca, MOR</p>
+      </div>
+    </div>
+
+    <div class="sucursal">
+      <a href="https://www.google.com/maps?q=Calle+Principal+%23456,+Col.+Centro,+Amecameca,+EDOMEX" target="_blank">
+        <img src="sucursal_amecameca.jpg" alt="Sucursal Amecameca">
+      </a>
+      <h3>Sucursal Amecameca</h3>
+      <div class="direccion">
+        <p>Calle Principal #456, Col. Centro</p>
+        <p class="ciudad">Amecameca, EDOMEX</p>
+      </div>
+    </div>
+
+    <div class="sucursal">
+      <a href="https://www.google.com/maps?q=Avenida+del+Sol+%23321,+Col.+Moderna,+Querétaro,+QRO" target="_blank">
+        <img src="sucursal_queretaro.jpg" alt="Sucursal Querétaro">
+      </a>
+      <h3>Sucursal Querétaro</h3>
+      <div class="direccion">
+        <p>Avenida del Sol #321, Col. Moderna</p>
+        <p class="ciudad">Querétaro, QRO</p>
+      </div>
+    </div>
+
+    <div class="sucursal">
+      <a href="https://www.google.com/maps?q=Av.+Independencia+%23654,+Col.+Centro,+Zacatecas,+ZAC" target="_blank">
+        <img src="sucursal_zacatecas.jpg" alt="Sucursal Zacatecas">
+      </a>
+      <h3>Sucursal Zacatecas</h3>
+      <div class="direccion">
+        <p>Av. Independencia #654, Col. Centro</p>
+        <p class="ciudad">Zacatecas, ZAC</p>
+      </div>
+    </div>
+
+    <div class="sucursal">
+      <a href="https://www.google.com/maps?q=Calle+Norte+%23456,+Col.+Industrial,+Monterrey,+NL" target="_blank">
+        <img src="sucursal_nuevoleon.jpg" alt="Sucursal Nuevo León">
+      </a>
+      <h3>Sucursal Nuevo León</h3>
+      <div class="direccion">
+        <p>Calle Norte #456, Col. Industrial</p>
+        <p class="ciudad">Monterrey, NL</p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
